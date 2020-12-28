@@ -1,48 +1,61 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GoldenShoe</title>
+    <title>Golden Shoe</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GoldenShoe</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - GoldenShoe - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <link rel="stylesheet" href="~/lib/fontawesome/fontawesome/css/all.css" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+</head>
+
+<body>
+    <div class="container-fluid" style="position:relative; min-height: 100vh">
+        <div class="row page-header">
+            <div class="col-md-6 col-lg-6">
+                <header class="clearfix" role="heading">
+                    <a title="Home" class="goldenshoe" href="@Url.Action("Index","Home")"><h1 style="padding-left:20px">Golden Shoe</h1></a>
+                </header>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <nav class="float-right" role="navigation">
+                    <a title="Search for items" href=""><i class="fa fa-search"></i></a>
+                    <a title="Home" href="@Url.Action("Index","Home")"><i class="fa fa-home"></i></a>
+                    <a title="Your Account" href=""><i class="fa fa-user"></i></a>
+                    <a title="Your Cart" href=""><i class="fa fa-shopping-cart"></i></a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+
+        <div class="footer page-footer">
+            <div class="row social-media justify-content-center">
+                <a title="Golden Shoe Facebook page" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a title="Golden Shoe Snapchat account" href="https://www.snapchat.com/l/en-gb/" target="_blank"><i class="fab fa-snapchat-square"></i></a>
+                <a title="Golden Shoe Instagram page" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram-square"></i></a>
+                <a title="Golden Shoe Twitter page" href="https://twitter.com/home?lang=en-gb" target="_blank"><i class="fab fa-twitter-square"></i></a>
+            </div>
+            <div class="misc row">
+                <div class="column col-md-4 col-lg-4">
+                    <div class="col-header">
+                        HELP & INFORMATION
+                    </div>
+                </div>
+                <div class="column col-md-4 col-lg-4">
+                    <div class="col-header">
+                        ABOUT GOLDEN SHOE
+                    </div>
+                </div>
+                <div class="column col-md-4 col-lg-4">MORE FROM GOLDEN SHOE</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

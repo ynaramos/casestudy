@@ -169,3 +169,15 @@ html, body {
     }
 
 /* #endregion */
+
+/* #region PRODUCTS */
+
+.product-image {
+    max-width: 350px;
+    max-height: 350px;
+    min-width: 200px;
+    min-height: 200px;
+    display: block;
+}
+
+/* #endregion */

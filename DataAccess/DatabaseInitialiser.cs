@@ -35,6 +35,10 @@ namespace DataAccess
                 new Voucher { ID = "10%OFF", DiscountTypeID = 2, DiscountAvailableUntil = null, OneTimeUse = false },
                 new Voucher { ID = "£10OFF", DiscountTypeID = 1, DiscountAvailableUntil = new DateTime(2015, 5, 30), OneTimeUse = false }
             };
+
+            context.Commit();
+
+            /*--------------- ADD PRODUCTS ---------------*/
         }
     }
 }

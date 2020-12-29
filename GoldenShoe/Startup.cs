@@ -20,9 +20,8 @@ namespace GoldenShoe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalhostDB")));
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Local")));
             services.AddControllersWithViews();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GoldenShoe.Models;
+using DataAccess;
 
 namespace GoldenShoe.Controllers
 {

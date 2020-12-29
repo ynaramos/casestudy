@@ -51,14 +51,49 @@ namespace DataAccess
             SaveChanges();
         }
 
-        protected override void OnModelCreating(ModelBuilder mdBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            mdBuilder.Entity<Colour>().ToTable("Colour");
-            mdBuilder.Entity<DiscountType>().ToTable("DiscountType");
-            mdBuilder.Entity<Product>().ToTable("Product");
-            mdBuilder.Entity<ProductAvailability>().ToTable("ProductAvailability");
-            mdBuilder.Entity<Size>().ToTable("Size");
-            mdBuilder.Entity<Voucher>().ToTable("Voucher");
+            builder.Entity<Colour>().ToTable("Colour");
+
+            /*** DISCOUNT TYPE ***/
+            builder.Entity<DiscountType>().HasKey(x => x.ID).HasName("PK_DiscountType");
+            builder.Entity<DiscountType>().Property(x => x.ID).ValueGeneratedOnAdd();
+            builder.Entity<DiscountType>().Property(x => x.Description).IsRequired().HasMaxLength(150);
+            builder.Entity<DiscountType>().ToTable("DiscountType");
+
+            /*** PRODUCT ***/
+            builder.Entity<Product>().HasKey(x => x.ID).HasName("PK_Product");
+            builder.Entity<Product>().Property(x => x.ID).ValueGeneratedOnAdd();
+            builder.Entity<Product>().Property(x => x.ShoeName).IsRequired().HasMaxLength(150);
+            builder.Entity<Product>().Property(x => x.PhotoFilepath).IsRequired().HasMaxLength(250);
+            builder.Entity<Product>().Property(x => x.Description).IsRequired().HasMaxLength(600);
+            builder.Entity<Product>().ToTable("Product");
+
+            /*** PRODUCT AVAILABILITY ***/
+            builder.Entity<ProductAvailability>().HasKey(x => new { x.ProductID, x.SizeID }).HasName("PK_ProductAvailability");
+            builder.Entity<ProductAvailability>().HasOne(x => x.Product)
+                .WithMany(x => x.ProductAvailabilities)
+                .HasForeignKey(x => x.ProductID)
+                .HasConstraintName("FK_ProductAvailability_Product");
+            builder.Entity<ProductAvailability>().HasOne(x => x.Size)
+                .WithMany(x => x.SizeAvailabilities)
+                .HasForeignKey(x => x.SizeID)
+                .HasConstraintName("FK_ProductAvailability_Size");
+            builder.Entity<ProductAvailability>().ToTable("ProductAvailability");
+
+            /*** SIZE ***/
+            builder.Entity<Size>().HasKey(x => x.ID).HasName("PK_Size");
+            builder.Entity<Size>().Property(x => x.ID).ValueGeneratedOnAdd();
+            builder.Entity<Size>().ToTable("Size");
+
+            /*** VOUCHER ***/
+            builder.Entity<Voucher>().HasKey(x => x.ID).HasName("PK_Voucher");
+            builder.Entity<Voucher>().Property(x => x.ID).ValueGeneratedNever();
+            builder.Entity<Voucher>().HasOne(x => x.Discount)
+                .WithMany(x => x.Vouchers)
+                .HasForeignKey(x => x.DiscountTypeID)
+                .HasConstraintName("FK_Voucher_DiscountType");
+            builder.Entity<Voucher>().ToTable("Voucher");
         }
     }
 }

@@ -15,4 +15,9 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModelBuilders\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>

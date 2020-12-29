@@ -6,7 +6,7 @@ namespace DataAccess.DataModels
     {
         public int ID { get; set; }
 
-        public int ColourId { get; set; }
+        public int? ColourId { get; set; }
 
         public string ShoeName { get; set; }
 

@@ -1,4 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model GoldenShoe.ViewModels.HomeViewModel
 
+@{ 
+    var imageFilepath = "/images/";
+    var individualProductPagePath = Url.Action("DisplayProductPage", "Product");
+}
+<form asp-controller="Index" asp-action="Home" method="get" id="homepage" enctype="multipart/form-data">
+    <div class="row">
+        @for (var index = 0; index < Model.Products.Count; index++)
+        {
+            @Html.HiddenFor(x => Model.Products[index].ID)
+
+            <div class="column col-md-4" align="center">
+                @{ 
+                    var source = imageFilepath + Model.Products[index].PhotoFilepath;
+                }
+                <img src=@source class="rounded product-image"/>
+
+                <a href="@individualProductPagePath"><h4>@Html.DisplayFor(x => x.Products[index].ShoeName)</h4></a>
+                <h6>@Html.DisplayFor(x => x.Products[index].Price)</h6>
+
+            </div>
+        }
+    </div>
+</form>

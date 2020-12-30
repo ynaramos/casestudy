@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GoldenShoe.Models;
+using GoldenShoe.ViewModelBuilders;
 using DataAccess;
 
 namespace GoldenShoe.Controllers
@@ -9,15 +10,22 @@ namespace GoldenShoe.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Context _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Context context)
         {
             _logger = logger;
+            _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var modelBuilder = new HomeViewModelBuilder(_context);
+
+            var model = modelBuilder.GetAllProductsForDisplay();
+
+            return View(model);
         }
 
         public IActionResult Privacy()

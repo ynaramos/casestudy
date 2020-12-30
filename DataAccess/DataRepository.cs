@@ -8,10 +8,11 @@ namespace DataAccess
 {
     public class DataRepository
     {
-        protected readonly Context Context;
+        private readonly Context Context;
 
-        public DataRepository() 
-        { 
+        public DataRepository(Context context) 
+        {
+            Context = context;
         }
 
         public async Task<IList<Product>> GetAllProducts()

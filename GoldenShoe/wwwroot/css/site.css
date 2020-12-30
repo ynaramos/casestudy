@@ -82,7 +82,7 @@ html, body {
     --twitter-blue: #00acee;
     --snapchat-yellow: #FFFC00;
     --instagram-purple: #8134AF;
-    --site-black: #1c1b18;
+    --site-colour: #1c1b18;
 }
 
 .container-fluid {
@@ -93,7 +93,7 @@ html, body {
 }
 
 .page-header {
-    background-color: var(--site-black);
+    background-color: var(--site-colour);
 }
 
     .page-header .goldenshoe {

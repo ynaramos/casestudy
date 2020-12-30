@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess.DataModels
 {
@@ -10,6 +11,7 @@ namespace DataAccess.DataModels
 
         public string ShoeName { get; set; }
 
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
 
         public string PhotoFilepath { get; set; }

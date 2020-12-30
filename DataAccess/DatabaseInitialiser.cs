@@ -96,6 +96,58 @@ namespace DataAccess
                 context.Products.Add(p);
             }
             context.Commit();
+
+            var productAvailabilites = new ProductAvailability[]
+            {
+                new ProductAvailability 
+                {
+                    ProductID = 1,
+                    SizeID = 1,
+                    NumberAvailable = 25
+                },
+                new ProductAvailability
+                {
+                    ProductID = 1,
+                    SizeID = 2,
+                    NumberAvailable = 10
+                },
+                new ProductAvailability
+                {
+                    ProductID = 1,
+                    SizeID = 3,
+                    NumberAvailable = 0
+                },
+                new ProductAvailability
+                {
+                    ProductID = 1,
+                    SizeID = 4,
+                    NumberAvailable = 50
+                },
+                new ProductAvailability
+                {
+                    ProductID = 2,
+                    SizeID = 3,
+                    NumberAvailable = 1
+                },
+                new ProductAvailability
+                {
+                    ProductID = 3,
+                    SizeID = 3,
+                    NumberAvailable = 15
+                },
+                new ProductAvailability
+                {
+                    ProductID = 3,
+                    SizeID = 4,
+                    NumberAvailable = 15
+                }
+            };
+
+            foreach (ProductAvailability pa in productAvailabilites)
+            {
+                context.ProductAvailabilities.Add(pa);
+            }
+            context.Commit();
         }
     }
 }

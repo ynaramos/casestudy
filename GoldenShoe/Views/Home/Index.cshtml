@@ -16,7 +16,7 @@
                 }
                 <img src=@source class="rounded product-image"/>
 
-                <a href="@individualProductPagePath"><h4>@Html.DisplayFor(x => x.Products[index].ShoeName)</h4></a>
+                <h4>@Html.ActionLink(Model.Products[index].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model.Products[index].ID })</h4>
                 <h6>@Html.DisplayFor(x => x.Products[index].Price)</h6>
 
             </div>

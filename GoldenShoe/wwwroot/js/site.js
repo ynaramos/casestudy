@@ -3,3 +3,19 @@
 
 // Write your JavaScript code.
 
+function addToCart(urlToSend, prodId, sId) {
+    $.ajax({
+        url: urlToSend,
+        type: 'GET',
+        datatype: 'html',
+        data: { "productId": prodId, "sizeId" : sId },
+        success: function (data) {
+            window.location.href = data;
+            location.reload();
+        }
+    })
+}
+
+function changeShoppingCartNotification(numberInCart) {
+    $('#shoppingCartBadge').text(numberInCart);
+}

@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using GoldenShoe.ViewModelActioners;
 using GoldenShoe.ViewModelBuilders;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -24,6 +25,15 @@ namespace GoldenShoe.Controllers
             var model = builder.GetProductForDisplay(productId);
 
             return View(model);
+        }
+
+        public IActionResult AddProductToCart(int productId, int sizeId)
+        {
+            var actioner = new ProductViewModelActioner(_context);
+
+            actioner.AddItemToCart(productId, sizeId);
+
+            return RedirectToAction("DisplayProductPage", new { productId });
         }
     }
 }

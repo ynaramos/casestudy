@@ -20,6 +20,8 @@ namespace DataAccess.DataModels
 
         public ICollection<ProductAvailability> ProductAvailabilities { get; set; }
 
+        public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+
         public Colour Colour { get; set; }
     }
 }

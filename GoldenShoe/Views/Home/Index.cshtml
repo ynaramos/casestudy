@@ -5,7 +5,7 @@
     var individualProductPagePath = Url.Action("DisplayProductPage", "Product");
 }
 <form asp-controller="Index" asp-action="Home" method="get" id="homepage" enctype="multipart/form-data">
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
         @for (var index = 0; index < Model.Products.Count; index++)
         {
             @Html.HiddenFor(x => Model.Products[index].ID)
@@ -16,9 +16,8 @@
                 }
                 <img src=@source class="rounded product-image"/>
 
-                <a href="@individualProductPagePath"><h4>@Html.DisplayFor(x => x.Products[index].ShoeName)</h4></a>
+                <h4>@Html.ActionLink(Model.Products[index].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model.Products[index].ID })</h4>
                 <h6>@Html.DisplayFor(x => x.Products[index].Price)</h6>
-
             </div>
         }
     </div>

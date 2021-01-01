@@ -15,6 +15,8 @@ namespace DataAccess
 
         public DbSet<ProductAvailability> ProductAvailabilities { get; set; }
 
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
         public DbSet<Size> Sizes { get; set; }
 
         public DbSet<Voucher> Vouchers { get; set; }
@@ -80,6 +82,18 @@ namespace DataAccess
                 .HasForeignKey(x => x.SizeID)
                 .HasConstraintName("FK_ProductAvailability_Size");
             builder.Entity<ProductAvailability>().ToTable("ProductAvailability");
+
+            /*** Shopping Cart Item ***/
+            builder.Entity<ShoppingCartItem>().HasKey(x => new { x.ProductID, x.SizeID }).HasName("PK_ShoppingCartItem");
+            builder.Entity<ShoppingCartItem>().HasOne(x => x.Product)
+                .WithMany(x => x.ShoppingCartItems)
+                .HasForeignKey(x => x.ProductID)
+                .HasConstraintName("FK_ShoppingCartItem_Product");
+            builder.Entity<ShoppingCartItem>().HasOne(x => x.Size)
+                .WithMany(x => x.ShoppingCartItems)
+                .HasForeignKey(x => x.SizeID)
+                .HasConstraintName("FK_ShoppingCartItem_Size");
+            builder.Entity<ShoppingCartItem>().ToTable("ShoppingCartItem");
 
             /*** SIZE ***/
             builder.Entity<Size>().HasKey(x => x.ID).HasName("PK_Size");

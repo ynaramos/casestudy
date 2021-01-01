@@ -84,3 +84,4 @@ D:\GIT\source\repos\casestudy\GoldenShoe\bin\Debug\netcoreapp3.1\DataAccess.dll
 D:\GIT\source\repos\casestudy\GoldenShoe\bin\Debug\netcoreapp3.1\DataAccess.pdb
 D:\GIT\source\repos\casestudy\GoldenShoe\obj\Debug\netcoreapp3.1\GoldenShoe.csproj.CoreCompileInputs.cache
 D:\GIT\source\repos\casestudy\GoldenShoe\obj\Debug\netcoreapp3.1\GoldenShoe.MvcApplicationPartsAssemblyInfo.cache
+D:\GIT\source\repos\casestudy\GoldenShoe\obj\Debug\netcoreapp3.1\Razor\Views\Product\DisplayProductPage.cshtml.g.cs

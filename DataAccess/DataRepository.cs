@@ -19,8 +19,32 @@ namespace DataAccess
         {
             return await Context
                 .Get<Product>()
-                .OrderBy(x => x.ShoeName)
+                .OrderBy(x => x.ID)
                 .ToListAsync();
+        }
+
+        public async Task<IList<ProductAvailability>> GetProductAvailabilitiesByProductId(int productId)
+        {
+            return await Context
+                .Get<ProductAvailability>()
+                .Where(x => x.ProductID == productId)
+                .Include(x => x.Size)
+                .OrderBy(x => x.Size.SizeNumber)
+                .ToListAsync();
+        }
+
+        public async Task<Product> GetProductForDisplay(int productId)
+        {
+            return await Context
+                .Get<Product>()
+                .SingleAsync(x => x.ID == productId);
+        }
+
+        public int GetShoppingCartQuantities()
+        {
+            return Context
+                .Set<ShoppingCartItem>()
+                .Count();
         }
 
     }

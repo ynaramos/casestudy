@@ -6,7 +6,7 @@ namespace GoldenShoe.ViewModels
     public class HomeViewModel
     {
         public IList<Product> Products { get; set; }
-
-        public IList<ShoppingCartItemViewModel> InCart { get; set; }
+        
+        public int InCart { get; set; }
     }
 }

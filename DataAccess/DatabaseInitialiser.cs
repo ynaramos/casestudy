@@ -126,8 +126,38 @@ namespace DataAccess
                 new ProductAvailability
                 {
                     ProductID = 2,
+                    SizeID = 1,
+                    NumberAvailable = 35
+                },
+                new ProductAvailability
+                {
+                    ProductID = 2,
+                    SizeID = 2,
+                    NumberAvailable = 0
+                },
+                new ProductAvailability
+                {
+                    ProductID = 2,
                     SizeID = 3,
                     NumberAvailable = 1
+                },
+                new ProductAvailability
+                {
+                    ProductID = 2,
+                    SizeID = 4,
+                    NumberAvailable = 0
+                },
+                new ProductAvailability
+                {
+                    ProductID = 3,
+                    SizeID = 1,
+                    NumberAvailable = 15
+                },
+                new ProductAvailability
+                {
+                    ProductID = 3,
+                    SizeID = 2,
+                    NumberAvailable = 15
                 },
                 new ProductAvailability
                 {

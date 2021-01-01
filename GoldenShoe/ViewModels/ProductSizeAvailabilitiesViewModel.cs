@@ -7,5 +7,7 @@
         public double Size { get; set; }
 
         public int Quantity { get; set; }
+
+        public bool Available { get; set; }
     }
 }

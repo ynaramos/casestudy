@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using GoldenShoe.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
 namespace GoldenShoe.ViewModelBuilders
@@ -21,18 +22,25 @@ namespace GoldenShoe.ViewModelBuilders
 
             var sizesAvailable = repo.GetProductAvailabilitiesByProductId(id).Result;
 
-            var sizes = new List<ProductSizeAvailabilitiesViewModel>();
+            var sizes = new List<SelectListItem>();
+
+            int numInCart = repo.GetShoppingCartQuantities();
 
             foreach (var sizeAvailable in sizesAvailable)
             {
-                sizes.Add(new ProductSizeAvailabilitiesViewModel { SizeID = sizeAvailable.SizeID, Size = sizeAvailable.Size.SizeNumber, Quantity = sizeAvailable.NumberAvailable });
+                sizes.Add(new SelectListItem { 
+                    Value = sizeAvailable.SizeID.ToString(), 
+                    Text = sizeAvailable.NumberAvailable > 0 ? sizeAvailable.Size.SizeNumber.ToString() : sizeAvailable.Size.SizeNumber.ToString() + " (Unavailable)", 
+                    Disabled = sizeAvailable.NumberAvailable <= 0
+                });
             }
 
             var model = new ProductViewModel
             {
                 Product = product,
+                SelectedSizeID = 0,
                 Availabilities = sizes,
-                InCart = new List<ShoppingCartItemViewModel>()
+                InCart = numInCart
             };
 
             return model;

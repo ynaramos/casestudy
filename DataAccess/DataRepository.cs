@@ -23,6 +23,16 @@ namespace DataAccess
                 .ToListAsync();
         }
 
+        public async Task<IList<ProductAvailability>> GetProductAvailabilitiesByProductId(int productId)
+        {
+            return await Context
+                .Get<ProductAvailability>()
+                .Where(x => x.ProductID == productId)
+                .Include(x => x.Size)
+                .OrderBy(x => x.Size.SizeNumber)
+                .ToListAsync();
+        }
+
         public async Task<Product> GetProductForDisplay(int productId)
         {
             return await Context
@@ -30,13 +40,12 @@ namespace DataAccess
                 .SingleAsync(x => x.ID == productId);
         }
 
-        public async Task<IList<ProductAvailability>> GetProductAvailabilitiesByProductId(int productId)
+        public int GetShoppingCartQuantities()
         {
-            return await Context
-                .Get<ProductAvailability>()
-                .Where(x => x.ProductID == productId)
-                .OrderBy(x => x.Size)
-                .ToListAsync();
+            return Context
+                .Set<ShoppingCartItem>()
+                .Count();
         }
+
     }
 }

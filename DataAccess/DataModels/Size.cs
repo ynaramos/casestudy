@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DataAccess.DataModels
 {
@@ -11,5 +9,7 @@ namespace DataAccess.DataModels
         public double SizeNumber { get; set; }
 
         public ICollection<ProductAvailability> SizeAvailabilities { get; set; }
+
+        public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }

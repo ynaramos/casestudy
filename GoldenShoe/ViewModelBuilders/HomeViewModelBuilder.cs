@@ -19,11 +19,12 @@ namespace GoldenShoe.ViewModelBuilders
             var repo = new DataRepository(_context);
 
             IList<Product> products = repo.GetAllProducts().Result;
+            int numInCart = repo.GetShoppingCartQuantities();
 
             var model = new HomeViewModel
             {
                 Products = products,
-                InCart = new List<ShoppingCartItemViewModel>()
+                InCart = numInCart
             };
 
             return model;

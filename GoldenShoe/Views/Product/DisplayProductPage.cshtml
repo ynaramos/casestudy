@@ -1,2 +1,33 @@
 ﻿@model GoldenShoe.ViewModels.ProductViewModel
 
+@{
+    var imageFilepath = "/images/";
+    var homePath = Url.Action("Index", "Home");
+}
+
+<div class="row" style="margin-top:15px; margin-left: 10px;">
+    <a href="@homePath" class="btn btn-outline-dark" role="button">
+        <i class="fa fa-arrow-left" style="padding-right: 5px"></i>
+        <span>Continue browsing</span>
+    </a>
+</div>
+<div class="row">
+    <div class="column col-md-6" align="center" style="margin-top: 10px;">
+        @{
+            var source = imageFilepath + Model.Product.PhotoFilepath;
+        }
+        <img src=@source class="rounded product-image" />
+    </div>
+    <div class="column col-md-6 product-desc">
+        @Html.HiddenFor(x => x.Product.ID)
+        <h3>@Html.DisplayFor(x => x.Product.ShoeName)</h3>
+        <h4>@Html.DisplayFor(x => x.Product.Price)</h4>
+        <div style="padding-top: 10px; padding-bottom: 5px;">
+            @Html.DropDownListFor(x => x.SelectedSizeID, Model.Availabilities, new { @class = "form-control" })
+        </div>
+        <div style="padding-bottom: 15px;">
+            <button class="btn btn-success">Add to cart</button>
+        </div>
+        <div class="card"><p style="padding:5px;">@Html.DisplayFor(x => x.Product.Description)</p></div>
+    </div>
+</div>

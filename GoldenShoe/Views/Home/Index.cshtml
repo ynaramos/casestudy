@@ -19,10 +19,15 @@
                 @{
                     var source = imageFilepath + Model.Products[index].PhotoFilepath;
                 }
+
                 <img src=@source class="rounded product-image" />
 
                 <h4>@Html.ActionLink(Model.Products[index].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model.Products[index].ID })</h4>
                 <h6>@Html.DisplayFor(x => x.Products[index].Price)</h6>
+
+                @for (int i = 0; i < 5; i++) {
+                    <i class="far fa-star fa-xs"></i>  
+                }
             </div>
         }
     </div>

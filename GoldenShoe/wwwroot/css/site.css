@@ -190,8 +190,8 @@ html, body {
 .product-image {
     max-width: 350px;
     max-height: 350px;
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 150px;
+    min-height: 150px;
     display: block;
 }
 
@@ -201,4 +201,21 @@ html, body {
     padding-top: 15px;
 }
 
+/* #endregion */
+/* #region CART */
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5px;
+    margin-right: 0px;
+    padding: 15px 20px;
+    background-color: #dbdbdb;
+}
+
+.cart-product-image {
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 75px;
+    min-height: 75px;
+}
 /* #endregion */

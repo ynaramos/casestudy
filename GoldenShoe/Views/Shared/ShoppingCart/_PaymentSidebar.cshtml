@@ -1,0 +1,25 @@
+﻿@model GoldenShoe.ViewModels.CartTotalViewModel
+
+
+<div class="row">
+    <div class="col-md-10">
+        <div class="sidebar rounded-top rounded-bottom">
+            <div class="form-row">
+                @Html.LabelFor(x => x.Voucher.ID, "Enter a voucher code")
+                @Html.TextBoxFor(x => x.Voucher.ID, new { @class = "form-control" })
+                <button type="button" class="btn btn-secondary" style="margin-top: 10px">Apply voucher code</button>
+            </div>
+
+            <hr />
+            <div style="margin-top:20px" align="right">
+                <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
+                <button type="button" class="btn btn-success">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+
+    <hr />
+</div>

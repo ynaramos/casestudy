@@ -1,0 +1,30 @@
+﻿@model IList<DataAccess.DataModels.ShoppingCartItem>
+
+@{
+    var imageFilepath = "/images/";
+}
+
+<h3 style="padding: 20px">Your Shopping Cart</h3>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-auto col-sm-6 col-xs-4" align="center">
+            @{
+                var source = imageFilepath + Model[i].Product.PhotoFilepath;
+                var subtotal = Model[i].Product.Price * Model[i].Quantity;
+            }
+            <img src=@source class="img-thumbnail cart-product-image" />
+        </div>
+        <div class="col-md-auto col-sm-6 col-xs-8">
+            <h6>@Html.ActionLink(Model[i].Product.ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID })</h6>
+            <h7>@Html.DisplayFor(x => x[i].Product.Price)</h7>
+            <h7>Quantity: @Html.DisplayFor(x => x[i].Quantity) </h7>
+            <h7>Subtotal: @String.Format("{0:C}", subtotal) </h7>
+        </div>
+    </div>
+
+    <hr />
+}
+

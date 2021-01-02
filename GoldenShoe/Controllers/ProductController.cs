@@ -8,8 +8,8 @@ namespace GoldenShoe.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ILogger<ProductController> _logger;
         private readonly Context _context;
+        private readonly ILogger<ProductController> _logger;
 
         public ProductController(ILogger<ProductController> logger, Context context)
         {

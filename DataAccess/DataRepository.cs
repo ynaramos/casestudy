@@ -53,11 +53,27 @@ namespace DataAccess
                 .SingleAsync(x => x.ID == productId);
         }
 
+        public async Task<IList<ShoppingCartItem>> GetAllItemsInCart()
+        {
+            return await Context
+                .Set<ShoppingCartItem>()
+                .Include(x => x.Product)
+                .Include(x => x.Size)
+                .ToListAsync();
+        }
+
         public int GetShoppingCartQuantities()
         {
             return Context
                 .Set<ShoppingCartItem>()
                 .Sum(x => x.Quantity);
+        }
+
+        public double GetShoppingCartTotal()
+        {
+            return Context
+                .Set<ShoppingCartItem>()
+                .Sum(x => x.Product.Price * x.Quantity);
         }
 
         public void IncreaseItemQuantityInCart(int productId, int sizeId)

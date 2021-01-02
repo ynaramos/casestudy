@@ -179,10 +179,14 @@ html, body {
         text-align: center;
     }
 
+#shoppingCartBadge {
+    background-color: transparent;
+    position:relative;
+    top: -10px;
+    left: -37px;
+}
 /* #endregion */
-
 /* #region PRODUCTS */
-
 .product-image {
     max-width: 350px;
     max-height: 350px;

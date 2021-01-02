@@ -6,18 +6,28 @@
 }
 <form asp-controller="Index" asp-action="Home" method="get" id="homepage" enctype="multipart/form-data">
     <div class="row" style="margin-top: 50px;">
+
+        <script>
+            changeShoppingCartNotification('@Model.InCart')
+        </script>
+
         @for (var index = 0; index < Model.Products.Count; index++)
         {
             @Html.HiddenFor(x => Model.Products[index].ID)
 
             <div class="column col-md-4" align="center">
-                @{ 
+                @{
                     var source = imageFilepath + Model.Products[index].PhotoFilepath;
                 }
-                <img src=@source class="rounded product-image"/>
+
+                <img src=@source class="rounded product-image" />
 
                 <h4>@Html.ActionLink(Model.Products[index].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model.Products[index].ID })</h4>
                 <h6>@Html.DisplayFor(x => x.Products[index].Price)</h6>
+
+                @for (int i = 0; i < 5; i++) {
+                    <i class="far fa-star fa-xs"></i>  
+                }
             </div>
         }
     </div>

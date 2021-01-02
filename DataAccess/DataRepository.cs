@@ -15,6 +15,19 @@ namespace DataAccess
             Context = context;
         }
 
+        public void AddItemInShoppingCart(int productId, int sizeId)
+        {
+            var newItem = new ShoppingCartItem
+            {
+                ProductID = productId,
+                SizeID = sizeId,
+                Quantity = 1
+            };
+
+            Context.AddEntity(newItem);
+            Context.Commit();
+        }
+
         public async Task<IList<Product>> GetAllProducts()
         {
             return await Context
@@ -44,8 +57,26 @@ namespace DataAccess
         {
             return Context
                 .Set<ShoppingCartItem>()
-                .Count();
+                .Sum(x => x.Quantity);
         }
 
+        public void IncreaseItemQuantityInCart(int productId, int sizeId)
+        {
+            var item = Context
+                .Get<ShoppingCartItem>()
+                .Single(x => x.ProductID == productId && x.SizeID == sizeId);
+
+            item.Quantity += 1;
+
+            Context.UpdateEntity(item);
+            Context.Commit();
+        }
+
+        public bool ShoppingCartItemExists(int productId, int sizeId)
+        {
+            return Context
+                .Get<ShoppingCartItem>()
+                .Any(x => x.ProductID == productId && x.SizeID == sizeId);
+        }
     }
 }

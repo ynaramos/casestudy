@@ -20,7 +20,7 @@ namespace GoldenShoe.Controllers
         {
             var builder = new ShoppingCartViewModelBuilder(_context);
 
-            var model = builder.CreateModel();
+            var model = builder.CreateModel("");
 
             return View(model);
         }

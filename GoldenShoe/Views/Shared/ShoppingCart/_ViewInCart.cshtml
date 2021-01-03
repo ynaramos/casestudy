@@ -1,10 +1,10 @@
-﻿@model IList<DataAccess.DataModels.ShoppingCartItem>
+﻿@model IList<GoldenShoe.ViewModels.ShoppingCartItemViewModel>
 
 @{
     var imageFilepath = "/images/";
 }
 
-<h3 style="padding: 20px">Your Shopping Cart</h3>
+<h3 style="padding: 20px"><i class="fa fa-shopping-cart" style="padding-right: 15px"></i>Your Shopping Cart</h3>
 
 @for (int i = 0; i < Model.Count; i++)
 {
@@ -12,16 +12,28 @@
         <div class="col-md-1"></div>
         <div class="col-md-auto col-sm-6 col-xs-4" align="center">
             @{
-                var source = imageFilepath + Model[i].Product.PhotoFilepath;
-                var subtotal = Model[i].Product.Price * Model[i].Quantity;
+                var source = imageFilepath + Model[i].PhotoFilePath;
             }
             <img src=@source class="img-thumbnail cart-product-image" />
         </div>
-        <div class="col-md-auto col-sm-6 col-xs-8">
-            <h6>@Html.ActionLink(Model[i].Product.ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID })</h6>
-            <h7>@Html.DisplayFor(x => x[i].Product.Price)</h7>
-            <h7>Quantity: @Html.DisplayFor(x => x[i].Quantity) </h7>
-            <h7>Subtotal: @String.Format("{0:C}", subtotal) </h7>
+        <div class="col-md-auto col-sm-6 col-xs-8" style="padding-left: 50px;">
+            <div class="row">
+                @Html.HiddenFor(x => x[i].ProductID)
+                <h6>@Html.ActionLink(Model[i].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID })</h6>
+            </div>
+            <div class="row">
+                @Html.HiddenFor(x => x[i].SizeID)
+                <h7><b>Size:</b> @Html.DisplayFor(x => x[i].Size) </h7>
+            </div>
+            <div class="row">
+                <h7><b>Quantity:</b> @Html.DisplayFor(x => x[i].Quantity) </h7>
+            </div>
+            <div class="row">
+                <h7><b>Price:</b> @Html.DisplayFor(x => x[i].Price)</h7>
+            </div>
+            <div class="row">
+                <h7><b>Subtotal:</b> @Html.DisplayFor(x => x[i].TotalPrice) </h7>
+            </div>
         </div>
     </div>
 

@@ -17,6 +17,9 @@ namespace GoldenShoe.ViewModels
         [DataType(DataType.Currency)]
         public double TotalPrice { get; set; }
 
+        [DataType(DataType.Currency)]
+        public double DiscountedTotalPrice { get; set; }
+
         public string PhotoFilePath { get; set; }
 
         public int SizeID { get; set; }

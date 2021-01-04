@@ -9,5 +9,10 @@ namespace GoldenShoe.ViewModels
 
         [DataType(DataType.Currency)]
         public double Total { get; set; }
+
+        [DataType(DataType.Currency)]
+        public double DiscountedTotal { get; set; }
+
+        public bool VoucherApplied { get; set; }
     }
 }

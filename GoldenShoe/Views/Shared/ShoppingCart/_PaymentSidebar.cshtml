@@ -1,17 +1,26 @@
 ﻿@model GoldenShoe.ViewModels.CartTotalViewModel
 
-
-    <div class="sidebar rounded-top rounded-bottom">
-        <div class="form-row">
-            @Html.LabelFor(x => x.Voucher.ID, "Enter a voucher code")
-            @Html.TextBoxFor(x => x.Voucher.ID, new { @class = "form-control" })
-            <button type="button" class="btn btn-secondary" style="margin-top: 10px">Apply voucher code</button>
-        </div>
-
-        <hr />
-
-        <div style="margin-top:20px" align="right">
-            <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
-            <button type="button" class="btn btn-success">Checkout</button>
-        </div>
+@{ 
+    var url = Url.Action("ApplyVoucher", "ShoppingCart");
+}
+<div class="sidebar rounded-top rounded-bottom">
+    <div class="form-row">
+        @Html.LabelFor(x => x.Voucher.ID, "Enter a voucher code")
+        @Html.TextBoxFor(x => x.Voucher.ID, new { @class = "form-control", @onchange = "enableApplyVoucherButton();", @id = "voucherCodeInput" })
     </div>
+
+    <div>
+        <button type="button" style="margin-top:5px;" class="btn btn-secondary" id="voucherButton" disabled onclick="addVoucher('@url', $(voucherCodeInput).val())">
+            Apply voucher code
+        </button>
+    </div>
+
+    <div style="clear:both;"></div>
+    <hr />
+
+    <div style="margin-top:20px" align="right">
+        <h6 style="color:red;" id="voucherCodeDesc">@Html.DisplayFor(x => x.Voucher.Discount.Description)</h6>
+        <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
+        <button type="button" class="btn btn-success">Checkout</button>
+    </div>
+</div>

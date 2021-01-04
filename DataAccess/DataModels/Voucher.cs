@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DataAccess.DataModels
 {
@@ -13,6 +11,10 @@ namespace DataAccess.DataModels
         public DateTime? DiscountAvailableUntil { get; set; }
 
         public bool OneTimeUse { get; set; }
+
+        public bool InUse { get; set; }
+
+        public bool Used { get; set; }
 
         public DiscountType Discount { get; set; }
     }

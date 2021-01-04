@@ -24,8 +24,8 @@ function addVoucher(urlToSend, voucherId) {
         datatype: 'html',
         data: { voucherId },
         success: function (data) {
-            if (!data.success) {
-                $('#voucherCodeDesc').text(data.message);
+            if (data.success != null) {
+                alert(data.message);
             }
             else {
                 window.location.reload(true);

@@ -116,7 +116,7 @@ namespace GoldenShoe.ViewModelBuilders
                     Price = x.Product.Price,
                     DiscountedPrice = 0,
                     TotalPrice = x.Product.Price * x.Quantity,
-                    DiscountedTotalPrice = x.Product.Price,
+                    DiscountedTotalPrice = 0,
                     PhotoFilePath = x.Product.PhotoFilepath,
                     SizeID = x.SizeID,
                     Size = x.Size.SizeNumber,

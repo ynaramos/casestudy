@@ -7,9 +7,7 @@
     <div class="form-row">
         @Html.LabelFor(x => x.Voucher.ID, "Enter a voucher code")
         @Html.TextBoxFor(x => x.Voucher.ID, new { @class = "form-control", @onchange = "enableApplyVoucherButton();", @id = "voucherCodeInput" })
-    </div>
 
-    <div>
         <button type="button" style="margin-top:5px;" class="btn btn-secondary" id="voucherButton" disabled onclick="addVoucher('@url', $(voucherCodeInput).val())">
             Apply voucher code
         </button>
@@ -20,7 +18,14 @@
 
     <div style="margin-top:20px" align="right">
         <h6 style="color:red;" id="voucherCodeDesc">@Html.DisplayFor(x => x.Voucher.Discount.Description)</h6>
-        <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
+        @if (Model.DiscountedTotal > 0)
+        {
+            <h3>Total: <strike>@Html.DisplayFor(x => x.Total)</strike> <span class="discount-style">@Html.DisplayFor(x => x.DiscountedTotal)</span></h3>
+        }
+        else
+        {
+            <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
+        }
         <button type="button" class="btn btn-success">Checkout</button>
     </div>
 </div>

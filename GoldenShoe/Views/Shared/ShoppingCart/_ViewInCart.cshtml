@@ -29,10 +29,24 @@
                 <h7><b>Quantity:</b> @Html.DisplayFor(x => x[i].Quantity) </h7>
             </div>
             <div class="row">
-                <h7><b>Price:</b> @Html.DisplayFor(x => x[i].Price)</h7>
+                @if (Model[i].DiscountedPrice > 0)
+                {
+                    <h7><b>Price:</b> <strike>@Html.DisplayFor(x => x[i].Price)</strike> <span class="discount-style">@Html.DisplayFor(x => x[i].DiscountedPrice)</span></h7>
+                }
+                else
+                {
+                    <h7><b>Price:</b> @Html.DisplayFor(x => x[i].Price)</h7>
+                }
             </div>
             <div class="row">
-                <h7><b>Subtotal:</b> @Html.DisplayFor(x => x[i].TotalPrice) </h7>
+                @if (Model[i].DiscountedTotalPrice > 0)
+                {
+                    <h7><b>Subtotal:</b> <strike>@Html.DisplayFor(x => x[i].TotalPrice)</strike> <span class="discount-style">@Html.DisplayFor(x => x[i].DiscountedTotalPrice)</span></h7>
+                }
+                else
+                {
+                    <h7><b>Subtotal:</b> @Html.DisplayFor(x => x[i].TotalPrice) </h7>
+                }
             </div>
         </div>
     </div>

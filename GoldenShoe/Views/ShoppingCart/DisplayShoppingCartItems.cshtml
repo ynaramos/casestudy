@@ -1,10 +1,9 @@
 ﻿@model GoldenShoe.ViewModels.ShoppingCartViewModel
-
 <script>
     changeShoppingCartNotification('@Model.InCart')
 </script>
 
-<form asp-controller="ShoppingCart" asp-action="DisplayShoppingCartItems" method="get" enctype="multipart/form-data">
+<form asp-controller="ShoppingCart" asp-action="DisplayShoppingCartItems" method="get" enctype="multipart/form-data" id="shoppingCartPage">
     <div class="row">
         <div class="col-md-8">
             <partial name="ShoppingCart/_ViewInCart" for="ProductsInCart" />

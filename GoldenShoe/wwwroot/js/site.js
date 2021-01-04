@@ -11,11 +11,33 @@ function addToCart(urlToSend, prodId, sId) {
         data: { "productId": prodId, "sizeId" : sId },
         success: function (data) {
             window.location.href = data;
-            location.reload();
+            window.location.reload(true);
+        }
+    })
+}
+
+function addVoucher(urlToSend, voucherId) {
+    $.ajax({
+        url: urlToSend,
+        cache: false,
+        type: 'GET',
+        datatype: 'html',
+        data: { voucherId },
+        success: function (data) {
+            if (data.success != null) {
+                alert(data.message);
+            }
+            else {
+                window.location.reload(true);
+            }
         }
     })
 }
 
 function changeShoppingCartNotification(numberInCart) {
     $('#shoppingCartBadge').text(numberInCart);
+}
+
+function enableApplyVoucherButton() {
+    $('#voucherButton').removeAttr('disabled');
 }

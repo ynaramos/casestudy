@@ -16,10 +16,10 @@ namespace DataAccess
             /*--------------- ADD DISCOUNT TYPES ---------------*/
             var discountTypes = new DiscountType[]
             {
-                new DiscountType { Description = "£10 off your purchase", IsPercentage = true, DiscountValue = 10, Threshold = null },
-                new DiscountType { Description = "10% off your purchase", IsPercentage = false, DiscountValue = 10, Threshold = null },
-                new DiscountType { Description = "£10 off orders above £50", IsPercentage= true, DiscountValue = 10, Threshold = 50 },
-                new DiscountType { Description = "20% off your purchase", IsPercentage = false, DiscountValue = 20, Threshold = null }
+                new DiscountType { Description = "£10 off your purchase", IsPercentage = false, DiscountValue = 10, Threshold = null },
+                new DiscountType { Description = "10% off your purchase", IsPercentage = true, DiscountValue = 10, Threshold = null },
+                new DiscountType { Description = "£10 off orders above £50", IsPercentage= false, DiscountValue = 10, Threshold = 50 },
+                new DiscountType { Description = "20% off your purchase", IsPercentage = true, DiscountValue = 20, Threshold = null }
             };
 
             foreach (DiscountType dt in discountTypes)
@@ -31,10 +31,10 @@ namespace DataAccess
             /*--------------- ADD DISCOUNT TYPES ---------------*/
             var vouchers = new Voucher[]
             {
-                new Voucher { ID = "£10OFFPLEASE", DiscountTypeID = 1, DiscountAvailableUntil = null, OneTimeUse = false },
-                new Voucher { ID = "ABCDEFG", DiscountTypeID = 1, DiscountAvailableUntil = null, OneTimeUse = true },
-                new Voucher { ID = "10%OFF", DiscountTypeID = 2, DiscountAvailableUntil = null, OneTimeUse = false },
-                new Voucher { ID = "£10OFF", DiscountTypeID = 1, DiscountAvailableUntil = new DateTime(2015, 5, 30), OneTimeUse = false }
+                new Voucher { ID = "£10OFFPLEASE", DiscountTypeID = 1, DiscountAvailableUntil = null, OneTimeUse = false, InUse = false, Used = false },
+                new Voucher { ID = "ABCDEFG", DiscountTypeID = 1, DiscountAvailableUntil = null, OneTimeUse = true, InUse = false, Used = false },
+                new Voucher { ID = "10%OFF", DiscountTypeID = 2, DiscountAvailableUntil = null, OneTimeUse = false, InUse = false, Used = false },
+                new Voucher { ID = "£10OFF", DiscountTypeID = 1, DiscountAvailableUntil = new DateTime(2015, 5, 30), OneTimeUse = false, InUse = false, Used = false }
             };
 
             foreach(Voucher v in vouchers)

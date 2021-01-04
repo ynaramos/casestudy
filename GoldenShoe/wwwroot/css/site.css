@@ -218,4 +218,8 @@ html, body {
     min-width: 75px;
     min-height: 75px;
 }
+
+.discount-style {
+    color: red;
+}
 /* #endregion */

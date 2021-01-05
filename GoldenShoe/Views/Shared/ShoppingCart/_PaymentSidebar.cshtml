@@ -5,6 +5,7 @@
 }
 <div class="sidebar rounded-top rounded-bottom">
     <div class="form-row">
+        @Html.HiddenFor(x => x.Voucher.ID)
         @Html.LabelFor(x => x.Voucher.ID, "Enter a voucher code")
         @Html.TextBoxFor(x => x.Voucher.ID, new { @class = "form-control", @onchange = "enableApplyVoucherButton();", @id = "voucherCodeInput" })
 
@@ -26,6 +27,13 @@
         {
             <h3>Total: @Html.DisplayFor(x => x.Total)</h3>
         }
-        <button type="button" class="btn btn-success">Checkout</button>
+        @if (Model.CanCheckout)
+        {
+            <button type="button" class="btn btn-success">Checkout</button>
+        }
+        else
+        {
+            <button type="button" class="btn btn-success" disabled>Checkout</button>
+        }
     </div>
 </div>

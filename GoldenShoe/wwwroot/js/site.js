@@ -10,7 +10,6 @@ function addToCart(urlToSend, prodId, sId) {
         datatype: 'html',
         data: { "productId": prodId, "sizeId" : sId },
         success: function (data) {
-            window.location.href = data;
             window.location.reload(true);
         }
     })
@@ -40,4 +39,18 @@ function changeShoppingCartNotification(numberInCart) {
 
 function enableApplyVoucherButton() {
     $('#voucherButton').removeAttr('disabled');
+}
+
+function removeShoppingCartItem(urlToSend, prodId, sId) {
+    $.ajax({
+        url: urlToSend,
+        cache: false,
+        type: 'GET',
+        datatype: 'html',
+        data: { "productId": prodId, "sizeId": sId },
+        success: function (data) {
+            window.location.href = data;
+            window.location.reload(true);
+        }
+    })
 }

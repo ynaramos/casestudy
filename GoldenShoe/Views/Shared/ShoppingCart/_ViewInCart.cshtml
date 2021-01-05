@@ -2,6 +2,7 @@
 
 @{
     var imageFilepath = "/images/";
+    var removeUrl = Url.Action("RemoveItem", "ShoppingCart");
 }
 
 <h3 style="padding: 20px"><i class="fa fa-shopping-cart" style="padding-right: 15px"></i>Your Shopping Cart</h3>
@@ -19,7 +20,14 @@
         <div class="col-md-auto col-sm-6 col-xs-8" style="padding-left: 50px;">
             <div class="row">
                 @Html.HiddenFor(x => x[i].ProductID)
-                <h6>@Html.ActionLink(Model[i].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID })</h6>
+                @if (Model[i].Available)
+                {
+                    <h6>@Html.ActionLink(Model[i].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID })</h6>
+                }
+                else
+                { 
+                    <h6>@Html.ActionLink(Model[i].ShoeName.ToString(), "DisplayProductPage", "Product", new { productId = Model[i].ProductID }) (Size no longer available) </h6>
+                }
             </div>
             <div class="row">
                 @Html.HiddenFor(x => x[i].SizeID)
@@ -47,6 +55,12 @@
                 {
                     <h7><b>Subtotal:</b> @Html.DisplayFor(x => x[i].TotalPrice) </h7>
                 }
+            </div>
+            <div class="row">
+                <button class="btn btn-danger" type="button"
+                        onclick="event.stopPropagation(); if (confirm('Are you sure you want to remove this item from your cart?')) { removeShoppingCartItem('@removeUrl', '@Model[i].ProductID', '@Model[i].SizeID') }">
+                    <i class="fa fa-trash"></i>
+                </button>
             </div>
         </div>
     </div>

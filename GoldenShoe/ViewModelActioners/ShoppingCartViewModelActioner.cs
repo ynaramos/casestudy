@@ -28,5 +28,12 @@ namespace GoldenShoe.ViewModelActioners
             
             return false; 
         }
+
+        public void RemoveShoppingCartItem(int productId, int sizeId)
+        {
+            var repo = new DataRepository(_context);
+
+            repo.RemoveShoppingCartItem(productId, sizeId);
+        }
     }
 }

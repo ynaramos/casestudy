@@ -14,5 +14,7 @@ namespace GoldenShoe.ViewModels
         public double DiscountedTotal { get; set; }
 
         public bool VoucherApplied { get; set; }
+
+        public bool CanCheckout { get; set; }
     }
 }

@@ -105,6 +105,24 @@ namespace DataAccess
             Context.Commit();
         }
 
+        public bool ItemStillAvailable(int productId, int sizeId)
+        {
+            return Context
+                .Get<ProductAvailability>()
+                .Single(x => x.ProductID == productId && x.SizeID == sizeId)
+                .NumberAvailable > 0;
+        }
+
+        public void RemoveShoppingCartItem(int productId, int sizeId)
+        {
+            var item = Context
+                .Get<ShoppingCartItem>()
+                .Single(x => x.ProductID == productId && x.SizeID == sizeId);
+
+            Context.RemoveEntity(item);
+            Context.Commit();
+        }
+
         public bool ShoppingCartItemExists(int productId, int sizeId)
         {
             return Context

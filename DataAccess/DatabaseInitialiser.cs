@@ -139,7 +139,7 @@ namespace DataAccess
                 {
                     ProductID = 2,
                     SizeID = 3,
-                    NumberAvailable = 1
+                    NumberAvailable = 125
                 },
                 new ProductAvailability
                 {
@@ -177,6 +177,18 @@ namespace DataAccess
             {
                 context.ProductAvailabilities.Add(pa);
             }
+            context.Commit();
+
+            /*--------------- ADD SHOPPING CART ITEMS ---------------*/
+
+            var item = new ShoppingCartItem
+            {
+                ProductID = 1,
+                SizeID = 3,
+                Quantity = 1
+            };
+
+            context.ShoppingCartItems.Add(item);
             context.Commit();
         }
     }

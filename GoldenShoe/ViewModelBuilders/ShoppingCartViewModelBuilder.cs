@@ -52,7 +52,8 @@ namespace GoldenShoe.ViewModelBuilders
                     PhotoFilePath = x.Product.PhotoFilepath,
                     SizeID = x.SizeID,
                     Size = x.Size.SizeNumber,
-                    Quantity = x.Quantity
+                    Quantity = x.Quantity,
+                    Available = repo.ItemStillAvailable(x.ProductID, x.SizeID)
                 })
                 .ToList();
 
@@ -62,7 +63,8 @@ namespace GoldenShoe.ViewModelBuilders
             {
                 Voucher = new Voucher(),
                 Total = repo.GetShoppingCartTotal(),
-                VoucherApplied = false
+                VoucherApplied = false,
+                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false)
             };
 
             var model = new ShoppingCartViewModel()
@@ -100,7 +102,8 @@ namespace GoldenShoe.ViewModelBuilders
                     PhotoFilePath = x.Product.PhotoFilepath,
                     SizeID = x.SizeID,
                     Size = x.Size.SizeNumber,
-                    Quantity = x.Quantity
+                    Quantity = x.Quantity,
+                    Available = repo.ItemStillAvailable(x.ProductID, x.SizeID)
                 })
                 .ToList();
 
@@ -120,7 +123,8 @@ namespace GoldenShoe.ViewModelBuilders
                     PhotoFilePath = x.Product.PhotoFilepath,
                     SizeID = x.SizeID,
                     Size = x.Size.SizeNumber,
-                    Quantity = x.Quantity
+                    Quantity = x.Quantity,
+                    Available = repo.ItemStillAvailable(x.ProductID, x.SizeID)
                 })
                 .ToList();
 
@@ -134,7 +138,8 @@ namespace GoldenShoe.ViewModelBuilders
                 Voucher = voucher,
                 Total = totalOfCart,
                 DiscountedTotal = totalDiscounted,
-                VoucherApplied = true
+                VoucherApplied = true,
+                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false)
             };
 
             var model = new ShoppingCartViewModel()

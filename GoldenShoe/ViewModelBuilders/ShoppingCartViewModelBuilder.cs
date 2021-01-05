@@ -64,7 +64,7 @@ namespace GoldenShoe.ViewModelBuilders
                 Voucher = new Voucher(),
                 Total = repo.GetShoppingCartTotal(),
                 VoucherApplied = false,
-                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false)
+                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false) && shoppingCartItemsVM.Count > 0
             };
 
             var model = new ShoppingCartViewModel()
@@ -139,7 +139,7 @@ namespace GoldenShoe.ViewModelBuilders
                 Total = totalOfCart,
                 DiscountedTotal = totalDiscounted,
                 VoucherApplied = true,
-                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false)
+                CanCheckout = !shoppingCartItemsVM.Any(x => x.Available == false) && shoppingCartItemsVM.Count > 0
             };
 
             var model = new ShoppingCartViewModel()
